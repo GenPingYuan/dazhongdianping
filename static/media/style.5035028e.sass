@@ -1,0 +1,20 @@
+@import "../../theme/default"
+.home-head
+    @include defaultFlex
+    background-color: $home-head-bg
+    color: #ffffff
+    height: $home-head-height
+    @include home-head-padding
+    a
+        color: #ffffff
+    .city-name
+        flex: 2
+        .sort-down
+            margin-left: 5px
+    
+    .user-info
+        flex: 1
+        @include defaultFlex
+        justify-content: flex-end
+
+
