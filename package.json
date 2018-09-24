@@ -1,0 +1,48 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "antd-mobile": "^2.2.4",
+    "es6-promise": "^4.2.4",
+    "react": "^16.4.2",
+    "react-addons-pure-render-mixin": "^15.6.2",
+    "react-dom": "^16.4.2",
+    "react-fetch": "0.0.9",
+    "react-fontawesome": "^1.6.1",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-router-scroll": "^0.4.4",
+    "react-scripts": "1.1.4",
+    "react-swipe": "^5.1.1",
+    "redux": "^4.0.0",
+    "swipe-js-iso": "^2.0.4",
+    "whatwg-fetch": "^2.0.4"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-app-rewired eject",
+    "mock": "node ./src/mock/server.js"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.8.0",
+    "koa": "^2.5.2",
+    "koa-body": "^4.0.4",
+    "koa-router": "^7.4.0",
+    "node-sass": "^4.9.3",
+    "react-app-rewired": "^1.6.2",
+    "sass-loader": "^7.1.0"
+  },
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:8080",
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": "/api"
+      }
+    }
+  }
+}
