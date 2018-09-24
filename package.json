@@ -2,7 +2,7 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/GenPingYuan/dazhongdianping.git",
+  "homepage": "https://genpingyuan.github.io/dazhongdianping/",
   "dependencies": {
     "antd-mobile": "^2.2.4",
     "es6-promise": "^4.2.4",
