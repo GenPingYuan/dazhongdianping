@@ -1,3 +1,5 @@
+
+
 const Koa = require('koa');
 const Router = require('koa-router');
 
@@ -36,6 +38,28 @@ router.get("/api/guessFavorite/:city/:page", async (ctx,next) => {
 var cityData = require("./city/cityList.js");
 router.get("/api/getCityData", async (ctx,next) => {
     ctx.body = cityData;
+})
+
+//详情
+router.get("/api/getDetailById/:id", async(ctx,next) => {
+    let result;
+    result = favorite.filter((item,index) => {
+        return item.data.filter((data,indexd) => {
+            return data.id == ctx.params.id;
+        });
+    })
+    //console.log(result);
+    console.log(ctx.params.id);
+    ctx.body = result[0].data.filter((item,index) => {
+        return item.id == ctx.params.id;
+    })[0]
+})
+
+var comments = require("./detail/comments.js");
+router.get("/api/getComments/:id", async (ctx,next) => {
+    ctx.body = comments.filter((item) => {
+        return item.shopId = ctx.params.id;
+    })
 })
 
 app.use(router.routes())

@@ -7,6 +7,7 @@ function get(url){
             'Accept': 'application/json, text/plain, */*'
         }
     }).then((res) => {
+        // console.log(res);
         return res.json();
     })
 }

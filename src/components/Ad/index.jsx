@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Prue from 'react-addons-pure-render-mixin';
+import Img from '../Img';
 import  './style.sass';
 
 class Ad extends Component {
@@ -23,7 +24,7 @@ class Ad extends Component {
                                     <div className="ad-title" style={{...item.style}}>{item.title}</div>
                                     <div className="ad-sub-title">{item.subTitle}</div>
                                     <div className="ad-img">
-                                        <img src={item.img} alt={item.subTitle}/>
+                                        <Img src={item.img} alt={item.subTitle}/>
                                     </div>
                                 </div>
                             )

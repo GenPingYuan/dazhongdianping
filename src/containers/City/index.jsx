@@ -10,14 +10,13 @@ class City extends Component {
         super(props);
     }
     render() {
-        const width =  window.screen.width;
-        const height = window.screen.height;
+
         // console.log(width);
         // console.log(height);
         return (
-            <div className="city-page" style={{width,height}}>
+            <div className="city-page">
                 <Head title="城市"/>
-                <div className="now-city" >
+                <div className="now-city">
                     {this.props.userInfo.cityName}
                 </div>
                 <CityList update={this.props.userInfoActions.update}/>

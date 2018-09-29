@@ -11,16 +11,22 @@ import Detail from '../containers/Detail';
 class RouterMap extends React.Component {
     constructor(props) {
         super(props);
-        this.onRouterLevel = this.onRouterLevel.bind(this);
+        this.getConfirmation = this.getConfirmation.bind(this);
     }
 
-    onRouterLevel() {
-       console.log(111111);
+    
+    componentWillMount() {
+        console.log("uzi");
+    }
+    
+    getConfirmation(){
+        const allowTransition = window.confirm("message")
     }
 
     render() {
         return (
-            <BrowserRouter  basename="/" getUserConfirmation={this.onRouterLevel}> 
+            <BrowserRouter  basename="/"
+                            > 
                 <div>
                     <Switch >
                         <Route exact path={url.Home} component={App} />

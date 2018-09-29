@@ -5,7 +5,7 @@ import Catagory from '../../components/Catagory';
 import Ad from './subpage/AdPage';
 import Favorite from './subpage/Favorite';
 import { connect } from 'react-redux';
-
+import './style.sass';
 class Home extends React.Component {
     constructor(props,context){
         super(props,context);
@@ -25,7 +25,7 @@ class Home extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="home-page">
                 {/* <Pull2Refresh {...this.state.refreshOpions} onRefresh={this.onRefresh}> */}
                     <HomeHead userInfo={this.props.userInfo}/>
                     <Catagory/>

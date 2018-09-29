@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Img from '../../Img';
 import '../style.sass';
 class Item extends Component {
     constructor(props){
@@ -11,7 +12,8 @@ class Item extends Component {
         return (
             <div className="favorite-item" >
                 <div className="img">
-                    <img src={item.img} alt={item.title}/>
+                    {/* <img src={svnResource + item.img} /> */}
+                    <Img src={item.img} alt={item.title}/>
                 </div>
                 <div className="content">
                     <div className="title">{item.title}</div>
