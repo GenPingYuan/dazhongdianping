@@ -1,8 +1,8 @@
 {
   "main.css": "static/css/main.f9529c98.css",
   "main.css.map": "static/css/main.f9529c98.css.map",
-  "main.js": "static/js/main.2b40903a.js",
-  "main.js.map": "static/js/main.2b40903a.js.map",
+  "main.js": "static/js/main.f2e48829.js",
+  "main.js.map": "static/js/main.f2e48829.js.map",
   "static\\media\\bql1.jpg": "static/media/bql1.3ec9feb5.jpg",
   "static\\media\\bql2.jpg": "static/media/bql2.64a02c25.jpg",
   "static\\media\\bql3.jpg": "static/media/bql3.2db45e9a.jpg",
@@ -29,6 +29,5 @@
   "static\\media\\bqla (4).jpg": "static/media/bqla (4).a75c79bb.jpg",
   "static\\media\\bqla (6).jpg": "static/media/bqla (6).a2fae558.jpg",
   "static\\media\\bqla (8).jpg": "static/media/bqla (8).5a399eeb.jpg",
-  "static\\media\\bqla (9).jpg": "static/media/bqla (9).bca05409.jpg",
-  "static\\media\\style.sass": "static/media/style.05d6b3cc.sass"
+  "static\\media\\bqla (9).jpg": "static/media/bqla (9).bca05409.jpg"
 }
