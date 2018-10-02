@@ -6,8 +6,6 @@ import City from '../containers/City';
 import Search from '../containers/Search';
 import Detail from '../containers/Detail';
      
-
-
 class RouterMap extends React.Component {
     constructor(props) {
         super(props);
@@ -16,17 +14,13 @@ class RouterMap extends React.Component {
 
     
     componentWillMount() {
+        console.log(url);
         console.log("uzi");
     }
     
-    getConfirmation(){
-        const allowTransition = window.confirm("message")
-    }
-
     render() {
         return (
-            <BrowserRouter  basename="/"
-                            > 
+            <BrowserRouter  basename={url.Home}> 
                 <div>
                     <Switch >
                         <Route exact path={url.Home} component={App} />
