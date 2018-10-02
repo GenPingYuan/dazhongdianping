@@ -58,7 +58,7 @@ router.get("/api/getDetailById/:id", async(ctx,next) => {
 var comments = require("./detail/comments.js");
 router.get("/api/getComments/:id", async (ctx,next) => {
     ctx.body = comments.filter((item) => {
-        return item.shopId = ctx.params.id;
+        return item.shopId == ctx.params.id;
     })
 })
 

@@ -16,6 +16,7 @@ class ListViewAnt extends Component {
 
     initData() {
         this.rData = this.props.dataSource;
+        console.log(this.props.dataSource);
         this.setState({
             dataSource: this.state.dataSource.cloneWithRows(this.rData),
             isLoading: false,
@@ -32,9 +33,9 @@ class ListViewAnt extends Component {
        
       }
 
-      loadMore = (event)=> {
-        this.props.loadMore(()=>{this.initData()});
-      }
+    loadMore = (event)=> {
+    this.props.loadMore(()=>{this.initData()});
+    }
     
 
     render() {

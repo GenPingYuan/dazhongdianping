@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import DetailHead from '../../components/DetailHead';
 import DetailInfo from '../../components/DetailInfo';
 import {getDetailById,getComments} from '../../mock/detail/detail';
+import Comments from '../../components/Comments';
 import './style.sass';
 class Detail extends Component {
     constructor(props) {
         super(props);
+        this.loadMore = this.loadMore.bind(this);
         this.state = {
             data: {},
-            comment: []
+            comments: [],
+            params: {}
         }
     }
 
@@ -23,22 +26,43 @@ class Detail extends Component {
 
         getComments(params.id).then((res) => {
             this.setState({
-                comment: res
+                comments: res
             })
         })
     }
     
+    loadMore(callback) {
+        console.log(callback);
+        const params = this.props.match.params;
+        getComments(params.id).then((res) => {
+            const comments = this.state.comments.concat(res);
+            this.setState({
+                comments
+            })
+            if(typeof callback == "function"){
+                callback()
+            }
+        })
+    }
 
     render() {
-        console.log("start---------");
-        console.log(this.state.data);
         return (
            
             <div className="detail-page">
                 <DetailHead title="商品详情"/>
                 <div className="detail-content">
                     {this.state.data.id ? 
-                        <DetailInfo data={this.state.data}/> 
+                        <div>
+                            <DetailInfo data={this.state.data}/>
+                            
+                            <div>用户评论</div>
+                            {
+                                this.state.comments.length ?
+                                <Comments comments={this.state.comments} loadMore={this.loadMore}/>
+                                : <div></div>
+                            }
+                        </div>
+                        
                     : <div>loading....</div>}
                 </div>
                 

@@ -5,10 +5,6 @@ export function getAdData() {
     return result;
 }
 
-export function getListData(city,page) {
-    const result = get("/api/homelist")
-    return result;
-}
 
 export function getCatagory() {
     return get("/api/catagory");
