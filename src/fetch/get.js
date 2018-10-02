@@ -1,7 +1,12 @@
 import 'whatwg-fetch';
 
+const host = window.location.host == "genpingyuan.github.io";
+
 function get(url){
     console.log("开始发送请求。。。。。。" + url);
+    if(host) {
+        url = "https://www.easy-mock.com/mock/5bb326b10b166245847a1b74" + url;
+    }
     return fetch(url,{
         credentials: 'include',
         headers: {
