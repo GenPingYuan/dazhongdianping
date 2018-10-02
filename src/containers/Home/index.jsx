@@ -23,6 +23,12 @@ class Home extends React.Component {
             } 
         }
     }
+
+    
+    componentWillMount() {
+        console.log("主页");
+    }
+    
     render() {
         return (
             <div className="home-page">
