@@ -1,6 +1,7 @@
 import 'whatwg-fetch';
 
 function get(url){
+    console.log("开始发送请求。。。。。。" + url);
     return fetch(url,{
         credentials: 'include',
         headers: {
