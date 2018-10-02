@@ -1,6 +1,5 @@
 import React  from 'react';
 import Prue from 'react-addons-pure-render-mixin';
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from './Home';
 import localStore from '../util/localStore';
 import { bindActionCreators } from 'redux';
@@ -14,6 +13,7 @@ class App extends React.Component {
     }
 
     componentWillMount(){
+        console.log("app.jsx");
         let cityName = localStore.getItem("cityName");
         
         if(!cityName) {
