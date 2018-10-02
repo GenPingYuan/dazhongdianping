@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route ,BrowserRouter,Switch,HashRouter} from "react-router-dom";
+import {Route,Switch,HashRouter} from "react-router-dom";
 import * as url from '../constants/url';
 import App from '../containers/App';
 import City from '../containers/City';
