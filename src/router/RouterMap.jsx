@@ -9,7 +9,6 @@ import Detail from '../containers/Detail';
 class RouterMap extends React.Component {
     constructor(props) {
         super(props);
-        this.getConfirmation = this.getConfirmation.bind(this);
     }
 
     
