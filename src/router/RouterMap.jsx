@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route ,BrowserRouter,Switch} from "react-router-dom";
+import {Route ,BrowserRouter,Switch,HashRouter} from "react-router-dom";
 import * as url from '../constants/url';
 import App from '../containers/App';
 import City from '../containers/City';
@@ -19,7 +19,7 @@ class RouterMap extends React.Component {
     
     render() {
         return (
-            <BrowserRouter  basename={url.Home}> 
+            <HashRouter  basename={url.Home}> 
                 <div>
                     <Switch >
                         <Route exact path={url.Home} component={App} />
@@ -28,7 +28,7 @@ class RouterMap extends React.Component {
                         <Route exact path={url.Detail} component={Detail}/>
                     </Switch>
                 </div>
-            </BrowserRouter>
+            </HashRouter>
             
         );
     }
