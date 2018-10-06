@@ -5,6 +5,7 @@ import App from '../containers/App';
 import City from '../containers/City';
 import Search from '../containers/Search';
 import Detail from '../containers/Detail';
+import Login from '../containers/Login';
      
 class RouterMap extends React.Component {
     constructor(props) {
@@ -13,8 +14,8 @@ class RouterMap extends React.Component {
 
     
     componentWillMount() {
-        console.log(url);
-        console.log("uzi");
+        // console.log(url);
+        // console.log("uzi");
     }
     
     render() {
@@ -26,6 +27,7 @@ class RouterMap extends React.Component {
                         <Route exact path={url.City} component={City}/>
                         <Route exact path={url.Search} component={Search}/>
                         <Route exact path={url.Detail} component={Detail}/>
+                        <Route exact path={url.Login} component={Login}/>
                     </Switch>
                 </div>
             </HashRouter>

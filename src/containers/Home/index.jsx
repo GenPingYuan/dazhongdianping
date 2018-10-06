@@ -4,7 +4,10 @@ import HomeHead from '../../components/HomeHead';
 import Catagory from '../../components/Catagory';
 import Ad from './subpage/AdPage';
 import Favorite from './subpage/Favorite';
+import { bindActionCreators } from 'redux';
+import * as homeActions from '../../actions/home';
 import { connect } from 'react-redux';
+import localStore from '../../util/localStore';
 import './style.sass';
 class Home extends React.Component {
     constructor(props,context){
@@ -26,7 +29,10 @@ class Home extends React.Component {
 
     
     componentWillMount() {
-        console.log("主页");
+        const username = localStore.getItem("username");
+        if(username){
+            this.props.userInfoActions.update({username});
+        }
     }
     
     render() {
@@ -54,7 +60,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch){
     return {
-
+        userInfoActions: bindActionCreators(homeActions,dispatch)
     }
 }
 
