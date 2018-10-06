@@ -23,7 +23,7 @@ class HomeHead extends Component {
                 <SearchInput/>
                 <div className="user-info">
                     {this.props.userInfo.username 
-                        ? <Link to={Login}><Img src="headimage.jpg"/></Link>
+                        ? <Link to={Login}><Img src="headimage.jpg" /></Link>
                         : <Link to={Login}><FontAwesome name='user'/></Link>
                     }
                 </div>
