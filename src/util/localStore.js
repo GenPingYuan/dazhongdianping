@@ -12,8 +12,10 @@ export default {
     setItem: function(key,value) {
         try {
             const state = localStorage.getItem("state") ? JSON.parse(localStorage.getItem("state")) : {};
-            console.log(localStorage.getItem("state"));
+            // console.log(localStorage.getItem("state"));
+            console.log("key------>" + key );
             state[key] = value;
+            // console.log(state);
             localStorage.setItem("state",JSON.stringify(state));
         } catch (error) {
             console.error("localStorage.setItem报错：" + error);

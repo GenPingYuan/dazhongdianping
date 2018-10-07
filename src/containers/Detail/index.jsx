@@ -5,8 +5,10 @@ import {getDetailById,getComments} from '../../mock/detail/detail';
 import Comments from '../../components/Comments';
 import {connect} from 'react-redux';
 import * as collectAction from '../../actions/collect';
+import * as shopCarAction from '../../actions/shopCar';
 import { bindActionCreators } from 'redux';
 import Collect from '../../components/Collect';
+import Buy from '../../components/Buy';
 import './style.sass';
 class Detail extends Component {
     constructor(props) {
@@ -15,21 +17,24 @@ class Detail extends Component {
         this.addCollect = this.addCollect.bind(this);
         this.delCollect = this.delCollect.bind(this);
         this.initData = this.initData.bind(this);
+        this.checkCollect = this.checkCollect.bind(this);
+        this.buy = this.buy.bind(this);
         this.state = {
+            params: {},
             data: {},
             comments: [],
             params: {},
             collected: false,
+            buyNum: 0
         }
     }
 
     
     componentWillMount() {
-        const params = this.props.match.params;
         /**
          * 获取商品数据
          */
-        getDetailById(params.id).then((res) => {
+        getDetailById(this.props.match.params.id).then((res) => {
             this.setState({
                 data: res
             })
@@ -37,7 +42,7 @@ class Detail extends Component {
         /**
          * 获取评价数据
          */
-        getComments(params.id).then((res) => {
+        getComments(this.props.match.params.id).then((res) => {
             this.setState({
                 comments: res
             })
@@ -48,13 +53,38 @@ class Detail extends Component {
     }
 
     initData() {
-        const params = this.props.match.params;
+        //判断是否已经收藏
+        this.checkCollect();
+        this.checkBuyed();
+    }
+
+    /**
+     * 判断是否已经购买过了
+     */
+    checkBuyed () {
+        if(this.props.shopCarInfo.length) {
+            const result = this.props.shopCarInfo.filter((item,index) => {
+                return item.shopId == this.props.match.params.id
+            })
+
+            if(result.length) {
+                this.setState({
+                    buyNum: result[0].num
+                })
+            }
+        }
+    }
+
+    /**
+     * check collect
+     */
+
+    checkCollect(){
         console.log("--------------------");
         console.log(typeof(this.props.collectInfo));
-        //判断是否已经收藏
         if(this.props.collectInfo.length) {
             const result = this.props.collectInfo.filter((item,i) => {
-                return item.shopId == params.id
+                return item.shopId == this.props.match.params.id
             })
              if(result.length) {
                  this.setState({
@@ -72,12 +102,13 @@ class Detail extends Component {
              })
          }
     }
+
     /**
      * 添加到收藏
      */
     addCollect() {
-        const params = this.props.match.params;
-        this.props.collectActions.add(params.id,this.props.userInfo.username);
+        
+        this.props.collectActions.add(this.props.match.params.id,this.props.userInfo.username);
         this.initData();
     }
 
@@ -86,15 +117,22 @@ class Detail extends Component {
      */
     delCollect() {
         console.log("deling...." + this.state.index);
-        const params = this.props.match.params;
-        this.props.collectActions.del(params.id,this.props.userInfo.username);
+        
+        this.props.collectActions.del(this.props.match.params.id,this.props.userInfo.username);
+        this.initData();
+    }
+
+    /**
+     * 购买商品
+     */
+    buy() {
+        this.props.shopCarActions.add(this.props.match.params.id);
         this.initData();
     }
     
     loadMore(callback) {
         console.log(callback);
-        const params = this.props.match.params;
-        getComments(params.id).then((res) => {
+        getComments(this.props.match.params.id).then((res) => {
             const comments = this.state.comments.concat(res);
             this.setState({
                 comments
@@ -118,7 +156,7 @@ class Detail extends Component {
                                     <Collect collected={this.state.collected} add={this.addCollect} del={this.delCollect}/>
                                 </div>
                                 <div>
-
+                                    <Buy buyNum={this.state.buyNum} add={this.buy}/>
                                 </div>
                             </div>
                             <div>用户评论</div>
@@ -140,13 +178,15 @@ class Detail extends Component {
 function mapStateToProps(state) {
     return {
         userInfo: state.userInfo,
-        collectInfo: state.collectInfo
+        collectInfo: state.collectInfo,
+        shopCarInfo: state.shopCarInfo
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        collectActions : bindActionCreators(collectAction,dispatch)
+        collectActions : bindActionCreators(collectAction,dispatch),
+        shopCarActions : bindActionCreators(shopCarAction,dispatch)
     }
 }
 
