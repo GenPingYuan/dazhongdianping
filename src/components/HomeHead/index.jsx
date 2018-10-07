@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import FontAwesome from 'react-fontawesome';
-import {City,Login} from '../../constants/url';
+import {City,Login,UserCenter} from '../../constants/url';
 import SearchInput from '../SearchInput';
 import Img from '../Img';
 require('./style.sass');
@@ -23,7 +23,7 @@ class HomeHead extends Component {
                 <SearchInput/>
                 <div className="user-info">
                     {this.props.userInfo.username 
-                        ? <Link to={Login}><Img src="headimage.jpg" /></Link>
+                        ? <Link to={UserCenter}><Img src="headimage.jpg" /></Link>
                         : <Link to={Login}><FontAwesome name='user'/></Link>
                     }
                 </div>
