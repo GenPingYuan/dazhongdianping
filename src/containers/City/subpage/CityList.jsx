@@ -25,7 +25,7 @@ class CityList extends Component {
         //console.log(e);
         console.log(cityName);
         this.props.update({cityName});
-        localStore.setItem("cityName",cityName);
+        // localStore.setItem("cityName",cityName);
     }
 
     render() {

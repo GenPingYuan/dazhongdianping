@@ -14,7 +14,7 @@ class App extends React.Component {
 
     componentWillMount(){
         console.log("app.jsx");
-        let cityName = localStore.getItem("cityName");
+        let cityName = this.props.userInfo ? this.props.userInfo.cityName : " 南昌";
         
         if(!cityName) {
             cityName = "南昌";
@@ -40,7 +40,7 @@ class App extends React.Component {
 
 function  mapStateToProps(state)  {
     return {
-        
+        userInfo: state.userInfo
     }
 }
  

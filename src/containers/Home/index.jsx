@@ -28,13 +28,6 @@ class Home extends React.Component {
     }
 
     
-    componentWillMount() {
-        const username = localStore.getItem("username");
-        if(username){
-            this.props.userInfoActions.update({username});
-        }
-    }
-    
     render() {
         return (
             <div className="home-page">

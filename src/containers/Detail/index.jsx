@@ -26,12 +26,17 @@ class Detail extends Component {
     
     componentWillMount() {
         const params = this.props.match.params;
+        /**
+         * 获取商品数据
+         */
         getDetailById(params.id).then((res) => {
             this.setState({
                 data: res
             })
         });
-
+        /**
+         * 获取评价数据
+         */
         getComments(params.id).then((res) => {
             this.setState({
                 comments: res
@@ -44,9 +49,11 @@ class Detail extends Component {
 
     initData() {
         const params = this.props.match.params;
-        console.log(this.props.collectInfo);
-        if(this.props.collectInfo.collects.length) {
-            const result = this.props.collectInfo.collects.filter((item,i) => {
+        console.log("--------------------");
+        console.log(typeof(this.props.collectInfo));
+        //判断是否已经收藏
+        if(this.props.collectInfo.length) {
+            const result = this.props.collectInfo.filter((item,i) => {
                 return item.shopId == params.id
             })
              if(result.length) {
@@ -65,13 +72,18 @@ class Detail extends Component {
              })
          }
     }
-
+    /**
+     * 添加到收藏
+     */
     addCollect() {
         const params = this.props.match.params;
         this.props.collectActions.add(params.id,this.props.userInfo.username);
         this.initData();
     }
 
+    /**
+     * 从收藏列表中移除
+     */
     delCollect() {
         console.log("deling...." + this.state.index);
         const params = this.props.match.params;
@@ -95,7 +107,6 @@ class Detail extends Component {
 
     render() {
         return (
-           
             <div className="detail-page">
                 <DetailHead title="商品详情"/>
                 <div className="detail-content">
